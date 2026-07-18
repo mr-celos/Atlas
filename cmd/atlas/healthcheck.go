@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
+	"log/slog"
 	"net/http"
 )
 
@@ -23,7 +23,7 @@ func healthHandler(w http.ResponseWriter, r *http.Request, version string) { // 
 		e := ErrorResponse{Message: err.Error()}
 		JSONValue, marshalErr := json.Marshal(e)
 		if marshalErr != nil {
-			fmt.Println("Error marshalling error response:", marshalErr)
+			slog.Error("Failed to marshal error response", "error", marshalErr)
 			return
 		}
 		w.Write(JSONValue)
