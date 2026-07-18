@@ -3,7 +3,6 @@ package main
 import (
 	"log"
 	"net/http"
-
 	"github.com/mr-celos/Atlas/internal/config"
 )
 

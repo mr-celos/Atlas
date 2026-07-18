@@ -19,7 +19,7 @@ func getEnvOrDefault(key, defaultValue string) string { // returns the value of 
 
 func Load() Config { // returns a config struct with values from environment variables or defaults
 	port := getEnvOrDefault("PORT", ":8080")
-	version := getEnvOrDefault("PRODUCT_VERSION", "0.0.128934")
+	version := getEnvOrDefault("PRODUCT_VERSION", "Development")
 
 	return Config{
 		Port:    port,
