@@ -15,9 +15,9 @@ type ErrorResponse struct {
 	Message string `json:"message"`
 }
 
-func healthHandler(w http.ResponseWriter, r *http.Request) { // handles the /health endpoint
+func healthHandler(w http.ResponseWriter, r *http.Request, version string) { // handles the /health endpoint
 	w.Header().Set("Content-Type", "application/json")
-	data, err := healthJSON()
+	data, err := healthJSON(version)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		e := ErrorResponse{Message: err.Error()}
@@ -32,8 +32,8 @@ func healthHandler(w http.ResponseWriter, r *http.Request) { // handles the /hea
 	w.Write(data)
 }
 
-func healthJSON() ([]byte, error) { // returns the health status as a JSON
-	h := Health{Status: "OK", Version: "0.0.1"}
+func healthJSON(version string) ([]byte, error) { // returns the health status as a JSON
+	h := Health{Status: "OK", Version: version}
 
 	JSONData, err := json.Marshal(h)
 	if err != nil {
