@@ -5,15 +5,15 @@ import (
 )
 
 func TestHealthJSON(t *testing.T) {
-	version := "1.2.3"
-	data, err := healthJSON(version)
+	version := "testing"
+	data, err := healthJSON(version, nil)
 
 	if err != nil {
 		t.Errorf("Expected no error, got %v", err)
 	}
 
-	if string(data) != `{"status":"OK","version":"1.2.3"}` {
-		t.Errorf("Expected Status: OK and Version: 1.2.3; got: %v", string(data))
+	if string(data) != `{"status":"OK","version":"testing","database_status":"FAIL"}` {
+		t.Errorf(`Expected {"status":"OK","version":"testing","database_status":"FAIL"}; got: %v`, string(data))
 	}
 
 }

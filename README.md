@@ -21,7 +21,8 @@ the way a real product would be, rather than as a tutorial.
 ## Tech stack
 
 - **Language:** Go
-- **Planned:** PostgreSQL, Redis, Docker, REST APIs, WebSockets
+- **Database:** PostgreSQL
+- **Planned:** Redis, Docker, REST APIs, WebSockets
 
 ## Running locally
 
@@ -33,10 +34,15 @@ go run .
 Configuration is read from environment variables (with sensible defaults
 if unset):
 
-| Variable          | Default       | Description              |
-|-------------------|---------------|---------------------------|
-| `PORT`             | `:8080`       | Address the server listens on |
-| `PRODUCT_VERSION`  | `Development` | Version string reported by `/health` |
+| Variable | Default | Description |
+|---|---|---|
+| `PORT` | `:8080` | Address the server listens on |
+| `PRODUCT_VERSION` | `Development` | Version string reported by `/health` |
+| `DATABASE_HOST` | `localhost` | PostgreSQL database host address |
+| `DATABASE_PORT` | `5432` | PostgreSQL database port number |
+| `DATABASE_USER` | `postgres` | PostgreSQL database username |
+| `DATABASE_PASSWORD` | *(empty)* | PostgreSQL database password |
+| `DATABASE_NAME` | `atlas` | PostgreSQL database name |
 
 ## Running tests
 
